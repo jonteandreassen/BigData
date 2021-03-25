@@ -90,7 +90,7 @@ namespace azureFunction
                     if (device == null)
                     {
                         device = await registryManager.AddDeviceAsync(new Device(data.DeviceName));
-                        await AddToSqlAsync(data);
+                        await AddtoSqlAsync(data);
                     }
                     if (device.Id == data.DeviceName)
                         return $"{iotHub.Split(";")[0]};DeviceId={device.Id};SharedAccessKey={device.Authentication.SymmetricKey.PrimaryKey}";
