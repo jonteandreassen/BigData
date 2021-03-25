@@ -34,46 +34,45 @@ namespace azureFunction
                 return new BadRequestObjectResult("DeviceId must be a valid mac-adress ie: xx:xx:xx:xx:xx:xx");
         }
 
-        public static async Task AddToSqlAsync(RegisterDevice data)
+        public static async Task<string> AddtoSqlAsync(RegisterDevice data)
         {
-            using (var conn = new SqlConnection(Environment.GetEnvironmentVariable("sqlConnection")))
+            using (var conn = new SqlConnection(Environment.GetEnvironmentVariable("SqlConnection")))
             {
                 await conn.OpenAsync();
 
                 using (var cmd = new SqlCommand("", conn))
                 {
-                    // DeviceVendors
-                    cmd.CommandText = "IF NOT EXISTS (SELECT 1 FROM DeviceVendors WHERE VendorName = @Vendor) INSERT INTO DeviceVendors OUTPUT inserted.Id VALUES(@Vendor) ELSE SELECT Id FROM DeviceVendors WHERE VendorName = @Vendor";
+                    /* DeviceVendors */
+                    cmd.CommandText = "IF NOT EXISTS (SELECT Id FROM DeviceVendors WHERE VendorName = @Vendor) INSERT INTO DeviceVendors OUTPUT inserted.Id VALUES(@Vendor) ELSE SELECT Id FROM DeviceVendors WHERE VendorName = @Vendor";
                     cmd.Parameters.AddWithValue("@Vendor", data.Vendor);
                     var vendorId = int.Parse(cmd.ExecuteScalar().ToString());
 
-                    // DeviceModels
-                    cmd.CommandText = "IF NOT EXISTS(SELECT Id FROM DeviceModels WHERE ModelName = @ModelName) INSERT INTO DeviceModels OUTPUT inserted.Id VALUES(@ModelName, @VendorId) ELSE SELECT Id FROM DeviceModels WHERE ModelName = @ModelName";
-                    cmd.Parameters.AddWithValue("@TypeName", data.Model);
+                    /* DeviceModels */
+                    cmd.CommandText = "IF NOT EXISTS (SELECT Id FROM DeviceModels WHERE ModelName = @ModelName)INSERT INTO DeviceModels OUTPUT inserted.Id VALUES(@ModelName, @VendorId) ELSE SELECT Id FROM DeviceModels WHERE ModelName = @ModelName";
+                    cmd.Parameters.AddWithValue("@ModelName", data.Model);
                     cmd.Parameters.AddWithValue("@VendorId", vendorId);
                     var modelId = int.Parse(cmd.ExecuteScalar().ToString());
 
-                    // DeviceTypes
+                    /* DeviceTypes */
                     cmd.CommandText = "IF NOT EXISTS (SELECT Id FROM DeviceTypes WHERE TypeName = @TypeName) INSERT INTO DeviceTypes OUTPUT inserted.Id VALUES(@TypeName) ELSE SELECT Id FROM DeviceTypes WHERE TypeName = @TypeName";
                     cmd.Parameters.AddWithValue("@TypeName", data.Type);
                     var deviceTypeId = int.Parse(cmd.ExecuteScalar().ToString());
 
-                    // GeoLocations
+                    /* GeoLocations */
                     cmd.CommandText = "IF NOT EXISTS (SELECT Id FROM GeoLocations WHERE Latitude = @Latitude AND Longitude = @Longitude) INSERT INTO GeoLocations OUTPUT inserted.Id VALUES(@Latitude, @Longitude) ELSE SELECT Id FROM GeoLocations WHERE Latitude = @Latitude AND Longitude = @Longitude";
                     cmd.Parameters.AddWithValue("@Latitude", data.Latitude);
                     cmd.Parameters.AddWithValue("@Longitude", data.Longitude);
-                    var GeoLocationsId = long.Parse(cmd.ExecuteScalar().ToString());
+                    var geoLocationId = long.Parse(cmd.ExecuteScalar().ToString());
 
-                    // Device
-                    cmd.CommandText = "IF NOT EXISTS (SELECT Id FROM Devices WHERE DeviceName = @DeviceName) INSERT INTO Devices OUTPUT inserted.Id VALUES(@DeviceName, @DeviceTypeId, @GeoLocationsId, @ModelId) ELSE SELECT Id FROM Devices WHERE DeviceName = @DeviceName";
+                    /* Devices */
+                    cmd.CommandText = "IF NOT EXISTS (SELECT DeviceName FROM Devices WHERE DeviceName = @DeviceName) INSERT INTO Devices OUTPUT inserted.DeviceName VALUES(@DeviceName, @DeviceTypeId, @GeoLocationId, @ModelId) ELSE SELECT DeviceName FROM Devices WHERE DeviceName = @DeviceName";
                     cmd.Parameters.AddWithValue("@DeviceName", data.DeviceName);
                     cmd.Parameters.AddWithValue("@DeviceTypeId", deviceTypeId);
-                    cmd.Parameters.AddWithValue("@GeoLocationsId", GeoLocationsId);
+                    cmd.Parameters.AddWithValue("@GeoLocationId", geoLocationId);
                     cmd.Parameters.AddWithValue("@ModelId", modelId);
-                    cmd.ExecuteNonQuery();
+                    var deviceName = cmd.ExecuteScalar().ToString();
 
-
-
+                    return deviceName;
                 }
             }
         }
