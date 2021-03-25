@@ -1,6 +1,8 @@
 using System;
+using System.Data.SqlClient;
 using System.IO;
 using System.Threading.Tasks;
+using azureFunction.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Devices;
@@ -18,34 +20,86 @@ namespace azureFunction
 
         [FunctionName("AddDevice")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
             ILogger log)
         {
 
-            Device device;
-            //GET method
-            string mac = req.Query["deviceid"];
-            //Post method
-            dynamic data = JsonConvert.DeserializeObject(await new StreamReader(req.Body).ReadToEndAsync());
+                      
+            var data = JsonConvert.DeserializeObject<RegisterDevice>(await new StreamReader(req.Body).ReadToEndAsync());
+            var connectionString = await AddDeviceAsync(data);
 
-            mac ??= data?.mac;
+            if (connectionString != "")
+                return new OkObjectResult(connectionString);
+            else
+                return new BadRequestObjectResult("DeviceId must be a valid mac-adress ie: xx:xx:xx:xx:xx:xx");
+        }
 
-            if(mac != null)
+        public static async Task AddToSqlAsync(RegisterDevice data)
+        {
+            using (var conn = new SqlConnection(Environment.GetEnvironmentVariable("sqlConnection")))
             {
-                //Validate if input is valid mac adress
-                if(mac.Length == 17)
-                {
-                    device = await registryManager.GetDeviceAsync(mac);
-                    if(device == null)
-                        device = await registryManager.AddDeviceAsync(new Device(mac));
+                await conn.OpenAsync();
 
-                    if(device.Id == mac)
-                        return new OkObjectResult($"{iotHub.Split(";")[0]};DeviceId={device.Id};SharedAccessKey={device.Authentication.SymmetricKey.PrimaryKey}");
+                using (var cmd = new SqlCommand("", conn))
+                {
+                    // DeviceVendors
+                    cmd.CommandText = "IF NOT EXISTS (SELECT 1 FROM DeviceVendors WHERE VendorName = @Vendor) INSERT INTO DeviceVendors OUTPUT inserted.Id VALUES(@Vendor) ELSE SELECT Id FROM DeviceVendors WHERE VendorName = @Vendor";
+                    cmd.Parameters.AddWithValue("@Vendor", data.Vendor);
+                    var vendorId = int.Parse(cmd.ExecuteScalar().ToString());
+
+                    // DeviceModels
+                    cmd.CommandText = "IF NOT EXISTS(SELECT Id FROM DeviceModels WHERE ModelName = @ModelName) INSERT INTO DeviceModels OUTPUT inserted.Id VALUES(@ModelName, @VendorId) ELSE SELECT Id FROM DeviceModels WHERE ModelName = @ModelName";
+                    cmd.Parameters.AddWithValue("@TypeName", data.Model);
+                    cmd.Parameters.AddWithValue("@VendorId", vendorId);
+                    var modelId = int.Parse(cmd.ExecuteScalar().ToString());
+
+                    // DeviceTypes
+                    cmd.CommandText = "IF NOT EXISTS (SELECT Id FROM DeviceTypes WHERE TypeName = @TypeName) INSERT INTO DeviceTypes OUTPUT inserted.Id VALUES(@TypeName) ELSE SELECT Id FROM DeviceTypes WHERE TypeName = @TypeName";
+                    cmd.Parameters.AddWithValue("@TypeName", data.Type);
+                    var deviceTypeId = int.Parse(cmd.ExecuteScalar().ToString());
+
+                    // GeoLocations
+                    cmd.CommandText = "IF NOT EXISTS (SELECT Id FROM GeoLocations WHERE Latitude = @Latitude AND Longitude = @Longitude) INSERT INTO DeviceTypes OUTPUT inserted.Id VALUES(@Latitude, @Longitude) ELSE SELECT Id FROM GeoLocations WHERE Latitude = @Latitude AND Longitude = @Longitude";
+                    cmd.Parameters.AddWithValue("@Latitude", data.Latitude);
+                    cmd.Parameters.AddWithValue("@Longitude", data.Longitude);
+                    var GeoLocationsId = long.Parse(cmd.ExecuteScalar().ToString());
+
+                    // Device
+                    cmd.CommandText = "IF NOT EXISTS (SELECT Id FROM Devices WHERE DeviceName = @DeviceName) INSERT INTO DeviceTypes OUTPUT inserted.Id VALUES(@DeviceName, @DeviceTypeId, @GeoLocationsId, @ModelId) ELSE SELECT Id FROM Devices WHERE DeviceName = @DeviceName";
+                    cmd.Parameters.AddWithValue("@DeviceName", data.DeviceName);
+                    cmd.Parameters.AddWithValue("@DeviceTypeId", deviceTypeId);
+                    cmd.Parameters.AddWithValue("@GeoLocationsId", GeoLocationsId);
+                    cmd.Parameters.AddWithValue("@ModelId", modelId);
+                    cmd.ExecuteNonQuery();
+
+
 
                 }
             }
-            return new BadRequestObjectResult("DeviceId must be a valid mac-adress ie: xx:xx:xx:xx:xx:xx");
         }
+
+
+        public static async  Task<string> AddDeviceAsync(RegisterDevice data)
+        {
+            Device device;
+            if (data.DeviceName != null)
+            {
+                //Validate if input is valid mac adress
+                if (data.DeviceName.Length == 17)
+                {
+                    device = await registryManager.GetDeviceAsync(data.DeviceName);
+                    if (device == null)
+                    {
+                        device = await registryManager.AddDeviceAsync(new Device(data.DeviceName));
+                        await AddToSqlAsync(data);
+                    }
+                    if (device.Id == data.DeviceName)
+                        return $"{iotHub.Split(";")[0]};DeviceId={device.Id};SharedAccessKey={device.Authentication.SymmetricKey.PrimaryKey}";
+                }
+            }
+            return "";
+        }
+
     }
 }
 
