@@ -22,9 +22,7 @@ namespace azureFunction
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
             ILogger log)
-        {
-
-                      
+        {       
             var data = JsonConvert.DeserializeObject<RegisterDevice>(await new StreamReader(req.Body).ReadToEndAsync());
             var connectionString = await AddDeviceAsync(data);
 
@@ -42,29 +40,29 @@ namespace azureFunction
 
                 using (var cmd = new SqlCommand("", conn))
                 {
-                    /* DeviceVendors */
+                    // DeviceVendors
                     cmd.CommandText = "IF NOT EXISTS (SELECT Id FROM DeviceVendors WHERE VendorName = @Vendor) INSERT INTO DeviceVendors OUTPUT inserted.Id VALUES(@Vendor) ELSE SELECT Id FROM DeviceVendors WHERE VendorName = @Vendor";
                     cmd.Parameters.AddWithValue("@Vendor", data.Vendor);
                     var vendorId = int.Parse(cmd.ExecuteScalar().ToString());
 
-                    /* DeviceModels */
+                    // DeviceModels 
                     cmd.CommandText = "IF NOT EXISTS (SELECT Id FROM DeviceModels WHERE ModelName = @ModelName)INSERT INTO DeviceModels OUTPUT inserted.Id VALUES(@ModelName, @VendorId) ELSE SELECT Id FROM DeviceModels WHERE ModelName = @ModelName";
                     cmd.Parameters.AddWithValue("@ModelName", data.Model);
                     cmd.Parameters.AddWithValue("@VendorId", vendorId);
                     var modelId = int.Parse(cmd.ExecuteScalar().ToString());
 
-                    /* DeviceTypes */
+                    // DeviceTypes
                     cmd.CommandText = "IF NOT EXISTS (SELECT Id FROM DeviceTypes WHERE TypeName = @TypeName) INSERT INTO DeviceTypes OUTPUT inserted.Id VALUES(@TypeName) ELSE SELECT Id FROM DeviceTypes WHERE TypeName = @TypeName";
                     cmd.Parameters.AddWithValue("@TypeName", data.Type);
                     var deviceTypeId = int.Parse(cmd.ExecuteScalar().ToString());
 
-                    /* GeoLocations */
+                    // GeoLocations
                     cmd.CommandText = "IF NOT EXISTS (SELECT Id FROM GeoLocations WHERE Latitude = @Latitude AND Longitude = @Longitude) INSERT INTO GeoLocations OUTPUT inserted.Id VALUES(@Latitude, @Longitude) ELSE SELECT Id FROM GeoLocations WHERE Latitude = @Latitude AND Longitude = @Longitude";
                     cmd.Parameters.AddWithValue("@Latitude", data.Latitude);
                     cmd.Parameters.AddWithValue("@Longitude", data.Longitude);
                     var geoLocationId = long.Parse(cmd.ExecuteScalar().ToString());
 
-                    /* Devices */
+                    // Devices 
                     cmd.CommandText = "IF NOT EXISTS (SELECT DeviceName FROM Devices WHERE DeviceName = @DeviceName) INSERT INTO Devices OUTPUT inserted.DeviceName VALUES(@DeviceName, @DeviceTypeId, @GeoLocationId, @ModelId) ELSE SELECT DeviceName FROM Devices WHERE DeviceName = @DeviceName";
                     cmd.Parameters.AddWithValue("@DeviceName", data.DeviceName);
                     cmd.Parameters.AddWithValue("@DeviceTypeId", deviceTypeId);
@@ -78,24 +76,40 @@ namespace azureFunction
         }
 
 
-        public static async  Task<string> AddDeviceAsync(RegisterDevice data)
+        public static async Task<string> AddDeviceAsync(RegisterDevice data)
         {
             Device device;
+
             if (data.DeviceName != null)
             {
-                //Validate if input is valid mac adress
                 if (data.DeviceName.Length == 17)
                 {
-                    device = await registryManager.GetDeviceAsync(data.DeviceName);
-                    if (device == null)
+                    try
                     {
-                        device = await registryManager.AddDeviceAsync(new Device(data.DeviceName));
-                        await AddtoSqlAsync(data);
+                        var deviceName = await AddtoSqlAsync(data);
+
+                        try
+                        {
+                            device = await registryManager.GetDeviceAsync(deviceName);
+
+                            if (device == null)
+                                device = await registryManager.AddDeviceAsync(new Device(data.DeviceName));
+
+                            if (device.Id == data.DeviceName)
+                                return $"{iotHub.Split(";")[0]};DeviceId={device.Id};SharedAccessKey={device.Authentication.SymmetricKey.PrimaryKey}";
+                        }
+                        catch
+                        {
+
+                        }
                     }
-                    if (device.Id == data.DeviceName)
-                        return $"{iotHub.Split(";")[0]};DeviceId={device.Id};SharedAccessKey={device.Authentication.SymmetricKey.PrimaryKey}";
+                    catch
+                    {
+
+                    }
                 }
             }
+
             return "";
         }
 
