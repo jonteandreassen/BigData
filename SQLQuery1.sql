@@ -15,3 +15,5 @@ SELECT * FROM DeviceTypes
 SELECT * FROM DeviceModels
 SELECT * FROM DeviceVendors
 SELECT * FROM GeoLocations
+
+DELETE FROM DeviceVendors
