@@ -11,17 +11,18 @@ using Newtonsoft.Json;
 
 namespace azureFunction
 {
-    public static class RegisterDevice
+    public static class RemoveDevice
     {
         private static string iotHub = Environment.GetEnvironmentVariable("iotHub");
         private static RegistryManager registryManager = RegistryManager.CreateFromConnectionString(iotHub);
 
-        [FunctionName("RegisterDevice")]
+
+
+        [FunctionName("RemoveDevice")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-
             Device device;
             //GET method
             string mac = req.Query["deviceid"];
@@ -29,22 +30,18 @@ namespace azureFunction
             dynamic data = JsonConvert.DeserializeObject(await new StreamReader(req.Body).ReadToEndAsync());
 
             mac ??= data?.mac;
-
             if(mac != null)
             {
-                //Validate if input is valid mac adress
-                if(mac.Length == 17)
+                device = await registryManager.GetDeviceAsync(mac);
+
+                if(device != null)
                 {
-                    device = await registryManager.GetDeviceAsync(mac);
-                    if(device == null)
-                        device = await registryManager.AddDeviceAsync(new Device(mac));
-
-                    if(device.Id == mac)
-                        return new OkObjectResult($"{iotHub.Split(";")[0]};DeviceId={device.Id};SharedAccessKey={device.Authentication.SymmetricKey.PrimaryKey}");
-
+                    await registryManager.RemoveDeviceAsync(device);
+                    return new OkResult();
                 }
             }
-            return new BadRequestObjectResult("DeviceId must be a valid mac-adress ie: xx:xx:xx:xx:xx:xx");
+
+            return new NotFoundObjectResult($"Device with deviceId {mac} does not exist");
         }
     }
 }
