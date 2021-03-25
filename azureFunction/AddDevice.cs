@@ -59,13 +59,13 @@ namespace azureFunction
                     var deviceTypeId = int.Parse(cmd.ExecuteScalar().ToString());
 
                     // GeoLocations
-                    cmd.CommandText = "IF NOT EXISTS (SELECT Id FROM GeoLocations WHERE Latitude = @Latitude AND Longitude = @Longitude) INSERT INTO DeviceTypes OUTPUT inserted.Id VALUES(@Latitude, @Longitude) ELSE SELECT Id FROM GeoLocations WHERE Latitude = @Latitude AND Longitude = @Longitude";
+                    cmd.CommandText = "IF NOT EXISTS (SELECT Id FROM GeoLocations WHERE Latitude = @Latitude AND Longitude = @Longitude) INSERT INTO GeoLocations OUTPUT inserted.Id VALUES(@Latitude, @Longitude) ELSE SELECT Id FROM GeoLocations WHERE Latitude = @Latitude AND Longitude = @Longitude";
                     cmd.Parameters.AddWithValue("@Latitude", data.Latitude);
                     cmd.Parameters.AddWithValue("@Longitude", data.Longitude);
                     var GeoLocationsId = long.Parse(cmd.ExecuteScalar().ToString());
 
                     // Device
-                    cmd.CommandText = "IF NOT EXISTS (SELECT Id FROM Devices WHERE DeviceName = @DeviceName) INSERT INTO DeviceTypes OUTPUT inserted.Id VALUES(@DeviceName, @DeviceTypeId, @GeoLocationsId, @ModelId) ELSE SELECT Id FROM Devices WHERE DeviceName = @DeviceName";
+                    cmd.CommandText = "IF NOT EXISTS (SELECT Id FROM Devices WHERE DeviceName = @DeviceName) INSERT INTO Devices OUTPUT inserted.Id VALUES(@DeviceName, @DeviceTypeId, @GeoLocationsId, @ModelId) ELSE SELECT Id FROM Devices WHERE DeviceName = @DeviceName";
                     cmd.Parameters.AddWithValue("@DeviceName", data.DeviceName);
                     cmd.Parameters.AddWithValue("@DeviceTypeId", deviceTypeId);
                     cmd.Parameters.AddWithValue("@GeoLocationsId", GeoLocationsId);
