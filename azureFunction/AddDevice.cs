@@ -11,12 +11,12 @@ using Newtonsoft.Json;
 
 namespace azureFunction
 {
-    public static class RegisterDevice
+    public static class AddDevice
     {
         private static string iotHub = Environment.GetEnvironmentVariable("iotHub");
         private static RegistryManager registryManager = RegistryManager.CreateFromConnectionString(iotHub);
 
-        [FunctionName("RegisterDevice")]
+        [FunctionName("AddDevice")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)

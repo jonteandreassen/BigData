@@ -37,7 +37,7 @@ namespace azureFunction
                 if(device != null)
                 {
                     await registryManager.RemoveDeviceAsync(device);
-                    return new OkResult();
+                    return new OkObjectResult($"Device with deviceId {mac} has been removed"); 
                 }
             }
 
