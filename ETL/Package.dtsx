@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{5AB09FBE-2452-46CD-82AB-7478B2EF55AD}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{AC0B65FE-BDF8-4BED-B657-8DC0DFFC9ED0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAX51ZWxhYRU2uQXPKczQoUAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABRMPQ6p2DvCKTv+gKgBjKRIBp1SnfCqEQfu/CsBhyA6QAAAAAOgAAAAAIAACAAAADGsJwFIQtENHhHGnILQGSWqQSGzFUPNB7UlYWSG5LxqyAAAAAyinJGKST5ANcwYO/wQyd+WM4QrubwqjXCeT1yGCtu5UAAAADdZ9O4X12lhqo8Zz9JVcwXie8y/rfr3jCoeCZCSC/AXl1vnVRLtQVZbJ2JE0/rN1Y89VnePt42mW0cMwWKqHC+</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAX51ZWxhYRU2uQXPKczQoUAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACgEIcIPHJfhNTkv9uPnBWAD6da4MICAldC5oCYpL+3LwAAAAAOgAAAAAIAACAAAADkmD6H2aRwWsrJm8+SVIz7tnF0rC96KhWdk/F8rx4cZiAAAABTJNdf9c5Mf3oIRSUJx7WSzRGj1V0RxV1Cyj7CxSzj9UAAAAByeWk49cp2bsWsbWghaMlHasvMgPaM/ciDVwwTybPIfo6HpNtzQWSVsY44/sKby+ZzvJdpkRShSbNrBBixjgiB</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAX51ZWxhYRU2uQXPKczQoUAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAlGj6U1/7/qUwmNy9sBAPY/lJz+enOhOGIqi2EtZt6eQAAAAAOgAAAAAIAACAAAACfYj1EoVzwfmwwCaQnpzuFB02+vmv1M8dsbpwxRGVLKiAAAACqciPDgPIDC3kVU++PEXgPYa4HwMIlKBfJTsJB/xAXYUAAAACUeRT3qBxP/hS5uSMkjDUz5Sabbfq9UQmSxdPFKdQvyU/HCfsfYpCm5T1WMxyc8v1p362PvA0l5m1bPyiBDz4z</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAX51ZWxhYRU2uQXPKczQoUAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABls1be4sGVc7L82dUuau9K6EU7nXrO10bXHApOGLL2zQAAAAAOgAAAAAIAACAAAADA9DmwocUhqglKZlUAiQxvbAHA86wj79o7dRr5KLlFUiAAAAB7Sm9xcpn867VlrB3PwqO9M6PDrel2fANqnXrl+iZgMkAAAADsAP9rushms8XCOrKj3R5AS1JKq2XTiNTugcMr6anVwJ1Q1Xz4OKcaia3CSWlmsOOVvbK0F1lGL31WOikJp+Mu</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -57,7 +57,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAX51ZWxhYRU2uQXPKczQoUAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB0ki1+DOJem84BBUvg8PlrzDRQj6W4R/PCJTCotYzNMQAAAAAOgAAAAAIAACAAAACxWxO4Br1jecQV/Dyg7fCb2s8CBtHfulCet1HbpRcyqyAAAACPY9tFBNri4+XvOCxR4roskZHfnFS2fJ4unnXcJtp2wUAAAABrIGb9V8YVnDJCaSWs1n3mB6/x2ygyrEySHcEwZzH/9013j2bI5IV8teFybTQRh6U/3IvWCm3Jqq2AFMKZc9YG</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAX51ZWxhYRU2uQXPKczQoUAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABvZXluXQ4FAT+hCjXkKevjQ06BQ8J98ZCIgEl5AGCIQAAAAAAOgAAAAAIAACAAAADgONhLcq4hxyX3iB8D0hU3bWE5oUMNktxU1g4fz9qM/iAAAAAOff0MBcGcclDIv0EYDty5Kkjmzat0BIM1/6pxEDnK6kAAAABtrphyB79oSxnMYmtKSJx213ty2htPgg35uuLocgJR+vQ9Vp0sFp1qBOde6ibHZ/npsi7kE+jO2z5jUZ7T1aBB</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -3985,6 +3985,13 @@
                       cachedName="DeviceId"
                       externalMetadataColumnId="Package\Populate FactDhtMeasurments\Fact Dht Measurments.Inputs[OLE DB Destination Input].ExternalColumns[Device]"
                       lineageId="Package\Populate FactDhtMeasurments\Sort.Outputs[Sort Output].Columns[DeviceId]" />
+                    <inputColumn
+                      refId="Package\Populate FactDhtMeasurments\Fact Dht Measurments.Inputs[OLE DB Destination Input].Columns[MacAdress]"
+                      cachedDataType="wstr"
+                      cachedLength="17"
+                      cachedName="MacAdress"
+                      externalMetadataColumnId="Package\Populate FactDhtMeasurments\Fact Dht Measurments.Inputs[OLE DB Destination Input].ExternalColumns[MacAdress]"
+                      lineageId="Package\Populate FactDhtMeasurments\Sort.Outputs[Sort Output].Columns[MacAdress]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4012,6 +4019,11 @@
                       refId="Package\Populate FactDhtMeasurments\Fact Dht Measurments.Inputs[OLE DB Destination Input].ExternalColumns[Humidity]"
                       dataType="r8"
                       name="Humidity" />
+                    <externalMetadataColumn
+                      refId="Package\Populate FactDhtMeasurments\Fact Dht Measurments.Inputs[OLE DB Destination Input].ExternalColumns[MacAdress]"
+                      dataType="wstr"
+                      length="17"
+                      name="MacAdress" />
                   </externalMetadataColumns>
                 </input>
               </inputs>

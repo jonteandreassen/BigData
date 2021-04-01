@@ -38,9 +38,13 @@ CREATE TABLE FactDhtMeasurments (
 	Device bigint not null references DimDevice(DeviceKey),
 	MeasureTime int not null references DimDateTime(UnixUtcTimeKey),
 	TemperatureAlert int not null references DimTemperatureAlert(TemperatureAlertKey),
+	MacAdress nvarchar(17) null,
 	Temperature float null,
 	Humidity float null
 )
+
+
+
 
 SELECT * FROM DimDevice
 SELECT * FROM DimTemperatureAlert
