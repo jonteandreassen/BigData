@@ -1,19 +1,45 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="3/31/2021 4:51:44 PM"
+  DTS:CreationDate="3/31/2021 5:00:29 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-S4G2FN8"
   DTS:CreatorName="DESKTOP-S4G2FN8\jonte"
-  DTS:DTSID="{42B447BE-ADEA-450F-A86B-5BE789D06BC6}"
+  DTS:DTSID="{50225E72-2DB0-4575-8BED-A3658D52548E}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.152"
   DTS:LocaleID="1053"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionGUID="{EF95AE95-E257-47DF-8021-FA7A4CD8468B}">
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{0B63A653-D5D5-4337-9A0A-436EAD03E92F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[jontesqlserver.database.windows.net.jonteOLAP.sqladmin]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{094A25D9-0DDD-44A6-9F21-61F257F6C7EE}"
+      DTS:ObjectName="jontesqlserver.database.windows.net.jonteOLAP.sqladmin">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=jontesqlserver.database.windows.net;User ID=sqladmin;Initial Catalog=jonteOLAP;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAX51ZWxhYRU2uQXPKczQoUAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADgg4usIRH+g2svnlvHhIFXGCEJwZQ5favUlwJeIHH8YAAAAAAOgAAAAAIAACAAAABbWVveksPwYakgXnR8+YlSSqvAcfRLoGp6aStJxlAvbyAAAACy8JIXzUPemXmm/A0Q5n8+0ecFN0URQcSf7iScHNAxh0AAAADvvzAEeCHYVoJPyIALVfZDN/Ld6TRYQaniwkN3jlV+5yFGbt2igI/aYTCtYWCW97OMqCDtCZZZ9nBRWM1wEvGa</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables />
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
