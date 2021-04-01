@@ -41,3 +41,8 @@ CREATE TABLE FactDhtMeasurments (
 	Temperature float null,
 	Humidity float null
 )
+
+SELECT * FROM DimDevice
+SELECT * FROM DimTemperatureAlert
+SELECT * FROM DimDateTime
+SELECT * FROM FactDhtMeasurments

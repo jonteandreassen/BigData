@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="3/31/2021 5:00:29 PM"
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAX51ZWxhYRU2uQXPKczQoUAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABRMPQ6p2DvCKTv+gKgBjKRIBp1SnfCqEQfu/CsBhyA6QAAAAAOgAAAAAIAACAAAADGsJwFIQtENHhHGnILQGSWqQSGzFUPNB7UlYWSG5LxqyAAAAAyinJGKST5ANcwYO/wQyd+WM4QrubwqjXCeT1yGCtu5UAAAADdZ9O4X12lhqo8Zz9JVcwXie8y/rfr3jCoeCZCSC/AXl1vnVRLtQVZbJ2JE0/rN1Y89VnePt42mW0cMwWKqHC+</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAX51ZWxhYRU2uQXPKczQoUAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADy1jDs8bHBRqZPQPwJgf2eCGSP89P9C+As8ZSNsK3SdwAAAAAOgAAAAAIAACAAAACB8JUWaJendFTcxCv0rlgi7gbaCPVWQXSq+FRzfslMcyAAAACHqccG/lJ6lrIZ3qKLJqi8gH6WOF4dmKU8iIB3jP4AZEAAAACQq5yMu7j5GMJxfK9UF6gumprc/86iZIpv9RbdUGcCU43HMCVhUFcUUcSFMzszefZJrc3hqsws4f/JEAx1nzbH</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAX51ZWxhYRU2uQXPKczQoUAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAlGj6U1/7/qUwmNy9sBAPY/lJz+enOhOGIqi2EtZt6eQAAAAAOgAAAAAIAACAAAACfYj1EoVzwfmwwCaQnpzuFB02+vmv1M8dsbpwxRGVLKiAAAACqciPDgPIDC3kVU++PEXgPYa4HwMIlKBfJTsJB/xAXYUAAAACUeRT3qBxP/hS5uSMkjDUz5Sabbfq9UQmSxdPFKdQvyU/HCfsfYpCm5T1WMxyc8v1p362PvA0l5m1bPyiBDz4z</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAX51ZWxhYRU2uQXPKczQoUAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA2NnD55OMQzZqqIxzywpuFSabHoiOu2m4kPvYKft/zSgAAAAAOgAAAAAIAACAAAADX0Q95YwEYai15aujLuR0Yw0cTaLuP3jeRNl9+ZrqCOyAAAAA6eyGENcpsEaEs5KWgtKlIme+yBk2Pw5/5lma5gu7gFkAAAAAknhS4jT4jlR4FcV1h6epgxY8BlynhZzYZAqBlcs58NxT32u4uZBd1mRcNPebBOGaV7CgfzBmtVlrR/tzt8NtF</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -57,7 +57,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAX51ZWxhYRU2uQXPKczQoUAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB0ki1+DOJem84BBUvg8PlrzDRQj6W4R/PCJTCotYzNMQAAAAAOgAAAAAIAACAAAACxWxO4Br1jecQV/Dyg7fCb2s8CBtHfulCet1HbpRcyqyAAAACPY9tFBNri4+XvOCxR4roskZHfnFS2fJ4unnXcJtp2wUAAAABrIGb9V8YVnDJCaSWs1n3mB6/x2ygyrEySHcEwZzH/9013j2bI5IV8teFybTQRh6U/3IvWCm3Jqq2AFMKZc9YG</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAX51ZWxhYRU2uQXPKczQoUAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA6bxHZNShbOEvp79SnHgrV+oSEU84v1d4CYww+TjLcFgAAAAAOgAAAAAIAACAAAACSfYpmalNXXJlI9g3ocZGi+TqXftHsZpvAfRtbZVSqHiAAAABLJcttg9oirqRrMb71kW81b0f+oBWf+i3fCouZfr2LdkAAAAAFAXctzCkuiUYFfD100kWQcFazoqvG7opyux0RU+0fq0X+KY7uTM8Gd04YMFlB4BsgqsDWGsQ1+hc5mClUjTPK</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -3300,67 +3300,72 @@
           </components>
           <paths>
             <path
-              refId="Package\Populate DimDevice.Paths[Merge Join Output3]"
+              refId="Package\Populate DimDevice.Paths[Merge Join Output]"
               endId="Package\Populate DimDevice\DimDevice.Inputs[OLE DB Destination Input]"
               name="Merge Join Output"
               startId="Package\Populate DimDevice\Merge Join 3.Outputs[Merge Join Output]" />
             <path
-              refId="Package\Populate DimDevice.Paths[Merge Join Output2]"
+              refId="Package\Populate DimDevice.Paths[Merge Join Output1]"
               endId="Package\Populate DimDevice\Sort 6.Inputs[Sort Input]"
               name="Merge Join Output"
               startId="Package\Populate DimDevice\Merge Join 1.Outputs[Merge Join Output]" />
             <path
-              refId="Package\Populate DimDevice.Paths[Merge Join Output1]"
+              refId="Package\Populate DimDevice.Paths[Merge Join Output2]"
               endId="Package\Populate DimDevice\Sort 7.Inputs[Sort Input]"
               name="Merge Join Output"
               startId="Package\Populate DimDevice\Merge Join 2.Outputs[Merge Join Output]" />
             <path
-              refId="Package\Populate DimDevice.Paths[Merge Join Output]"
+              refId="Package\Populate DimDevice.Paths[Merge Join Output3]"
               endId="Package\Populate DimDevice\Sort 3.Inputs[Sort Input]"
               name="Merge Join Output"
               startId="Package\Populate DimDevice\Merge Join.Outputs[Merge Join Output]" />
             <path
-              refId="Package\Populate DimDevice.Paths[OLE DB Source Output4]"
-              endId="Package\Populate DimDevice\Sort 5.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\Populate DimDevice\DeviceModels.Outputs[OLE DB Source Output]" />
-            <path
               refId="Package\Populate DimDevice.Paths[OLE DB Source Output3]"
-              endId="Package\Populate DimDevice\Sort 4.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\Populate DimDevice\DeviceVendor.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\Populate DimDevice.Paths[OLE DB Source Output1]"
-              endId="Package\Populate DimDevice\Sort 1.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\Populate DimDevice\DeviceTypes.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\Populate DimDevice.Paths[OLE DB Source Output2]"
               endId="Package\Populate DimDevice\Sort 2.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\Populate DimDevice\GeoLocations.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Populate DimDevice.Paths[OLE DB Source Output]"
+              refId="Package\Populate DimDevice.Paths[OLE DB Source Output2]"
+              endId="Package\Populate DimDevice\Sort 1.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Populate DimDevice\DeviceTypes.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Populate DimDevice.Paths[OLE DB Source Output4]"
               endId="Package\Populate DimDevice\Sort.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\Populate DimDevice\Devices.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Populate DimDevice.Paths[Sort Output2]"
+              refId="Package\Populate DimDevice.Paths[OLE DB Source Output]"
+              endId="Package\Populate DimDevice\Sort 5.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Populate DimDevice\DeviceModels.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Populate DimDevice.Paths[OLE DB Source Output1]"
+              endId="Package\Populate DimDevice\Sort 4.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Populate DimDevice\DeviceVendor.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Populate DimDevice.Paths[Sort Output6]"
+              endId="Package\Populate DimDevice\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Populate DimDevice\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Populate DimDevice.Paths[Sort Output]"
               endId="Package\Populate DimDevice\Merge Join 1.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\Populate DimDevice\Sort 3.Outputs[Sort Output]" />
             <path
-              refId="Package\Populate DimDevice.Paths[Sort Output3]"
+              refId="Package\Populate DimDevice.Paths[Sort Output1]"
               endId="Package\Populate DimDevice\Merge Join 1.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\Populate DimDevice\Sort 2.Outputs[Sort Output]" />
             <path
-              refId="Package\Populate DimDevice.Paths[Sort Output7]"
+              refId="Package\Populate DimDevice.Paths[Sort Output2]"
               endId="Package\Populate DimDevice\Merge Join 3.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\Populate DimDevice\Sort 7.Outputs[Sort Output]" />
             <path
-              refId="Package\Populate DimDevice.Paths[Sort Output1]"
+              refId="Package\Populate DimDevice.Paths[Sort Output3]"
               endId="Package\Populate DimDevice\Merge Join.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\Populate DimDevice\Sort 1.Outputs[Sort Output]" />
@@ -3375,12 +3380,7 @@
               name="Sort Output"
               startId="Package\Populate DimDevice\Sort 4.Outputs[Sort Output]" />
             <path
-              refId="Package\Populate DimDevice.Paths[Sort Output]"
-              endId="Package\Populate DimDevice\Merge Join.Inputs[Merge Join Left Input]"
-              name="Sort Output"
-              startId="Package\Populate DimDevice\Sort.Outputs[Sort Output]" />
-            <path
-              refId="Package\Populate DimDevice.Paths[Sort Output6]"
+              refId="Package\Populate DimDevice.Paths[Sort Output7]"
               endId="Package\Populate DimDevice\Merge Join 3.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\Populate DimDevice\Sort 6.Outputs[Sort Output]" />
@@ -4599,7 +4599,7 @@
           Id="Package\Populate DimDevice\Sort 1"
           TopLeft="401.25,301.25" />
         <EdgeLayout
-          Id="Package\Populate DimDevice.Paths[OLE DB Source Output]"
+          Id="Package\Populate DimDevice.Paths[OLE DB Source Output4]"
           TopLeft="150.5,220.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4621,7 +4621,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Populate DimDevice.Paths[OLE DB Source Output1]"
+          Id="Package\Populate DimDevice.Paths[OLE DB Source Output2]"
           TopLeft="455.375,222.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4643,7 +4643,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Populate DimDevice.Paths[Sort Output]"
+          Id="Package\Populate DimDevice.Paths[Sort Output6]"
           TopLeft="149.5,339.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4677,7 +4677,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Populate DimDevice.Paths[Sort Output1]"
+          Id="Package\Populate DimDevice.Paths[Sort Output3]"
           TopLeft="455.25,343.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4715,7 +4715,7 @@
           Id="Package\Populate DimDevice\Sort 2"
           TopLeft="408.75,466.25" />
         <EdgeLayout
-          Id="Package\Populate DimDevice.Paths[OLE DB Source Output2]"
+          Id="Package\Populate DimDevice.Paths[OLE DB Source Output3]"
           TopLeft="465,434.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4741,7 +4741,7 @@
           Id="Package\Populate DimDevice\Sort 3"
           TopLeft="223.75,468.75" />
         <EdgeLayout
-          Id="Package\Populate DimDevice.Paths[Merge Join Output]"
+          Id="Package\Populate DimDevice.Paths[Merge Join Output3]"
           TopLeft="277.75,438.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4767,7 +4767,7 @@
           Id="Package\Populate DimDevice\Merge Join 1"
           TopLeft="303.75,560" />
         <EdgeLayout
-          Id="Package\Populate DimDevice.Paths[Sort Output2]"
+          Id="Package\Populate DimDevice.Paths[Sort Output]"
           TopLeft="277.75,510.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4801,7 +4801,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Populate DimDevice.Paths[Sort Output3]"
+          Id="Package\Populate DimDevice.Paths[Sort Output1]"
           TopLeft="462.75,508.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4843,7 +4843,7 @@
           Id="Package\Populate DimDevice\Sort 5"
           TopLeft="607.5,472.5" />
         <EdgeLayout
-          Id="Package\Populate DimDevice.Paths[OLE DB Source Output3]"
+          Id="Package\Populate DimDevice.Paths[OLE DB Source Output1]"
           TopLeft="909.75,430.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4877,7 +4877,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Populate DimDevice.Paths[OLE DB Source Output4]"
+          Id="Package\Populate DimDevice.Paths[OLE DB Source Output]"
           TopLeft="651.25,435.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4991,7 +4991,7 @@
           Id="Package\Populate DimDevice\Sort 7"
           TopLeft="765,650" />
         <EdgeLayout
-          Id="Package\Populate DimDevice.Paths[Merge Join Output1]"
+          Id="Package\Populate DimDevice.Paths[Merge Join Output2]"
           TopLeft="804.75,598.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5025,7 +5025,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Populate DimDevice.Paths[Merge Join Output2]"
+          Id="Package\Populate DimDevice.Paths[Merge Join Output1]"
           TopLeft="376.875,602">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5051,7 +5051,7 @@
           Id="Package\Populate DimDevice\Merge Join 3"
           TopLeft="528.75,745" />
         <EdgeLayout
-          Id="Package\Populate DimDevice.Paths[Sort Output6]"
+          Id="Package\Populate DimDevice.Paths[Sort Output7]"
           TopLeft="379,697">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5085,7 +5085,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Populate DimDevice.Paths[Sort Output7]"
+          Id="Package\Populate DimDevice.Paths[Sort Output2]"
           TopLeft="819,692">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5123,7 +5123,7 @@
           Id="Package\Populate DimDevice\DimDevice"
           TopLeft="513.75,871.25" />
         <EdgeLayout
-          Id="Package\Populate DimDevice.Paths[Merge Join Output3]"
+          Id="Package\Populate DimDevice.Paths[Merge Join Output]"
           TopLeft="599.75,787">
           <EdgeLayout.Curve>
             <mssgle:Curve
