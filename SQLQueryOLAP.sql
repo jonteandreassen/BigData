@@ -44,7 +44,10 @@ CREATE TABLE FactDhtMeasurments (
 )
 
 
-
+DELETE DimDevice
+DELETE DimTemperatureAlert
+DELETE DimDateTime
+DELETE FactDhtMeasurments
 
 SELECT * FROM DimDevice
 SELECT * FROM DimTemperatureAlert

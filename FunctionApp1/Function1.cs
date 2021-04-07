@@ -36,6 +36,7 @@ namespace FunctionApp1
             long measureUnixTime = data.epochTime;
             long _timeStampId;
 
+
             using (SqlConnection conn = new SqlConnection(sqlConnection))
             {
                 conn.Open();
@@ -83,13 +84,13 @@ namespace FunctionApp1
                     //Status
                     cmd.CommandText = "IF NOT EXISTS (SELECT Id FROM TemperatureAlerts WHERE Status = @Status) INSERT INTO TemperatureAlerts OUTPUT inserted.Id VALUES(@Status) ELSE SELECT Id FROM TemperatureAlerts WHERE Status = @Status";
                     cmd.Parameters.AddWithValue("@Status", data.TemperatureAlert);
-                    var TemperatureAlerts = int.Parse(cmd.ExecuteScalar().ToString());
+                    var _temperatureAlert = int.Parse(cmd.ExecuteScalar().ToString());
 
                     //DhtMeasurements
                     cmd.CommandText = "INSERT INTO DhtMeasurements VALUES(@DeviceId, @MacAdress, @MeasureUnixTime, @Temperature, @Humidity, @TemperatureAlert)";
                     cmd.Parameters.AddWithValue("@Temperature", data.Temperature);
                     cmd.Parameters.AddWithValue("@Humidity", data.Humidity);
-                    cmd.Parameters.AddWithValue("@TemperatureAlert", data.TemperatureAlert);
+                    cmd.Parameters.AddWithValue("@TemperatureAlert", _temperatureAlert);
                     cmd.Parameters.AddWithValue("@MacAdress", _deviceId);
                     cmd.Parameters.AddWithValue("@DeviceId", DeviceId);
                     cmd.Parameters.AddWithValue("@MeasureUnixTime", _timeStampId);

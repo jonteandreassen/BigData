@@ -108,6 +108,7 @@ DELETE FROM DeviceModels
 DELETE FROM DeviceVendors
 DELETE FROM GeoLocations
 DELETE FROM TemperatureAlerts
+DELETE FROM TimeTable
 
 DROP TABLE DhtMeasurements
 DROP TABLE Devices
