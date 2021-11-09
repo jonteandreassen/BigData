@@ -6,9 +6,9 @@
 #define DHT_PIN 33
 #define DHT_TYPE DHT11
 //AZURE SETTINGS
-char *ssid = "JontesWiFi";
-char *pass = "%casaDeJonte";
-char *conn = "HostName=jonteIotHub.azure-devices.net;DeviceId=B8:F0:09:CC:ED:EC;SharedAccessKey=UnUsHpdrEwilYk9gW6QpueRSU0wOLWz5qE0Hs0Vjy1w=";
+char *ssid = " SSID";
+char *pass = " PASSWORD ";
+char *conn = " YOUR CONNECTION STRING";
 bool messagePending = false;
 int interval = 1000;
 unsigned long prevMillis = 0;
